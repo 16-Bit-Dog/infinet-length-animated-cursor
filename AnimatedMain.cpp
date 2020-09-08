@@ -182,9 +182,9 @@ int main() {
 			
 			
 			//SystemParametersInfoA(SPI_SETCURSORS, 0, NULL, 0); // reload cursors
-			if (i + 1 == filesToRead) {
+			if (i + 1 >= filesToRead) {
 
-				i = 0;
+				i = (filesToRead == 1) ?-1:0;
 
 
 
@@ -196,7 +196,7 @@ int main() {
 
 					if (cursorList[x - 1] == NULL) {
 
-						std::cout << "\n fileName was incorrect";
+						std::cout << "\n invalid handle made";
 
 					}
 
@@ -205,8 +205,8 @@ int main() {
 
 
 
-			}
-			std::cout << i;
+		}
+		//	std::cout << i;
 			
 		}
 		
