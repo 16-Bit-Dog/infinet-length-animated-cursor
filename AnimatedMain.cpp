@@ -1,4 +1,4 @@
-// made by Ariel Glasroth
+// made by Ariel G.
 
 
 
