@@ -334,7 +334,7 @@ void VideoToCursor() {
 
 	std::vector<HCURSOR> cursorList;
 
-	for (int i = 1; i <= count+1; i++) {
+	for (int i = 1; i <= count; i++) {
 		std::string fileNameRevised = (fileName + "\\" + std::to_string(i) + ".cur");
 
 		cursorList.push_back(LoadCursorFromFileA(fileNameRevised.c_str()));
@@ -370,7 +370,6 @@ void VideoToCursor() {
 
 	DWORD cursorID = convertType(cursorType).first;
 
-	SetSystemCursor(LoadCursor(0, IDC_ARROW), cursorID); // reset cursor
 
 	std::cout << "enter the delay until each cursor picture changes (this value is miliseconds) --> I reccomend making this the fps of the video; math would be INPUT = 1000/fpsOfVideo --> ex: if video is 24fps,  INPUT = 1000/24, INPUT = 42  --> also as a side note; your cursor pointer is pointing at the very left and middle of the square\n";
 
@@ -381,7 +380,7 @@ void VideoToCursor() {
 
 	for (int i = 0; i < count; i++) {
 		Sleep(delay);
-	
+		SetSystemCursor(cursorList[i], cursorID);
 
 		//SystemParametersInfoA(SPI_SETCURSORS, 0, NULL, 0); // reload cursors
 		if (i + 1 >= count) {
