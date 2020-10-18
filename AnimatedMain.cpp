@@ -439,49 +439,49 @@ void revertCursor() {
 	
 	DWORD cursorID = convertType(cursorType).first;
 
-	switch (cursorID) {
+	switch (cursorID) { 
 
 		//C:\\Windows\\Cursors\\   
-	case 1:
-		cursor =LoadCursorFromFileA("C:\\Windows\\Cursors\\wait_im.cur");
+	case 32650:
+		cursor =LoadCursorFromFileA("C:\\Windows\\Cursors\\size4_m.cur");
 		break;
-	case 2:
-		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_arrow_l.cur");
+	case 32512:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_arrow.cur");
 		break;
-	case 3:
+	case 32515:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\cross_il.cur");
 		break;
-	case 4:
+	case 32649:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_link_l.cur");
 		break;
-	case 5:
+	case 32651:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_helpsel_l.cur");
 		break;
-	case 6:
+	case 32513:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\beam_l.cur");
 		break;
-	case 7:
+	case 32648:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_unavail_l.cur");
 		break;
-	case 8:
+	case 32646:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_move_l.cur");
 		break;
-	case 9:
+	case 32643:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_nesw_l.cur");
 		break;
-	case 10:
+	case 32645:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_ns_l.cur");
 		break;
-	case 11:
+	case 32642:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_nwse_l.cur");
 		break;
-	case 12:
+	case 32644:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_ew_l.cur");
 		break;
-	case 13:
+	case 32516:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_up_l.cur");
 		break;
-	case 14:
+	case 32514:
 		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\wait_il.cur");
 		break;
 	}
