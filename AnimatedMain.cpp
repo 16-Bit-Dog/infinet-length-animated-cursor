@@ -1,9 +1,10 @@
 // made by Ariel Glasroth
 // video in the tutorial is mine... 
 // this is under the appache liscene 2.0 and all that legal stuff:
+// yes this is not fully efficent in any way; just works with low overhead for what it needs to do
 
 #define _CRT_SECURE_NO_WARNINGS
-
+#define ERROR
 #define OEMRESOURCE 
 #include <windows.h>
 #include <iostream>
@@ -125,7 +126,7 @@ void ImageToCursor(){
 
 
 
-	std::cout << "NOTE; restarting your computer resets any changed cursors. \n\nto use the program (multipule can be open at once):\n1. fill a folder with the images you want to be rotated through (name example, 1.CUR)\n2. drag and drop the folder in this window\n3. click enter \n4. chose which cursor you want to animate (ex: hand arrow) - and number of images to cycle through (putting a impossible value will result in a crash)\n5. the cursor will animate\n";
+	std::cout << "NOTE; restarting your computer resets any changed cursors (you can also use method 'r'/'R'). \n\nto use the program (multipule can be open at once):\n1. fill a folder with the images you want to be rotated through (name example, 1.CUR)\n2. drag and drop the folder in this window\n3. click enter \n4. chose which cursor you want to animate (ex: hand arrow) - and number of images to cycle through (putting a impossible value will result in a crash)\n5. the cursor will animate\n";
 
 	std::cin >> fileNameS;
 
@@ -224,7 +225,7 @@ void ImageToCursor(){
 
 void VideoToCursor() {
 
-	std::cout << "NOTE 1: once you do this operation, you can use them again with method y/Y (you need to look at the largest image name minus 1 to get the number of images). This method also may take more time depending on your computers speed \n\nNOTE; restarting your computer resets any changed cursors. You also need ffmpeg.exe to use this feature of the program; download it from their official website and when extracting the archive it should be in ffmpeg/bin/'ffmpeg' \n\nto use the program(multipule can be open at once) :\n1.fill a folder with the video you want to be rotated through(name must be 'video.mp4' -make sure the folder does not have spaces (and is just lowercase letters)   -- > yes you need a mp4, make a github issue request if someone - for some reason - wants this change)\n2.drag and drop the folder in this window\n3.click enter (sometimes you need to do it twice) \n4.chose which cursor you want to animate(ex: hand arrow) - and number of images to cycle through(putting a impossible value will result in a crash)\n5.the cursor will animate\n";
+	std::cout << "NOTE 1: once you do this operation, you can use them again with method y/Y (you need to look at the largest image name minus 1 to get the number of images). This method also may take more time depending on your computers speed \n\nNOTE; restarting your computer resets any changed cursors (you can also use method 'r'/'R'). You also need ffmpeg.exe to use this feature of the program; download it from their official website and when extracting the archive it should be in ffmpeg/bin/'ffmpeg' \n\nto use the program(multipule can be open at once) :\n1.fill a folder with the video you want to be rotated through(name must be 'video.mp4' -make sure the folder does not have spaces (and is just lowercase letters)   -- > yes you need a mp4, make a github issue request if someone - for some reason - wants this change)\n2.drag and drop the folder in this window\n3.click enter (sometimes you need to do it twice) \n4.chose which cursor you want to animate(ex: hand arrow) - and number of images to cycle through(putting a impossible value will result in a crash)\n5.the cursor will animate\n";
 
 
 
@@ -419,10 +420,80 @@ void VideoToCursor() {
 
 }
 
-
-int main() {
+void revertCursor() {
+	HCURSOR cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\wait_im.cur");
 	
-	std::cout << "click 'Y' or 'y' and enter for 'image to cursor', any other letter turns on 'video to cursor'\n\n\n\n\n";
+	for (int i = 1; i < 15; i++) {
+		value.first = convertType(i).first;
+		value.second = convertType(i).second;
+		std::cout << "\nType " << i << " :" << value.first << "\n";
+		std::cout << "\nInfo :" << value.second << "\n\n\n";
+
+	}
+
+
+	std::cout << "\nEnter the cursor type to revert (only works if windows is in c: drive, and cursors folder is inside the windows folder [this is default for windows])  --> C:\\Windows\\Cursors is the position of the default:";
+	std::cin >> cursorType;
+	std::cout << "\n";
+
+	
+	DWORD cursorID = convertType(cursorType).first;
+
+	switch (cursorID) {
+
+		//C:\\Windows\\Cursors\\   
+	case 1:
+		cursor =LoadCursorFromFileA("C:\\Windows\\Cursors\\wait_im.cur");
+		break;
+	case 2:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_arrow_l.cur");
+		break;
+	case 3:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\cross_il.cur");
+		break;
+	case 4:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_link_l.cur");
+		break;
+	case 5:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_helpsel_l.cur");
+		break;
+	case 6:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\beam_l.cur");
+		break;
+	case 7:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_unavail_l.cur");
+		break;
+	case 8:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_move_l.cur");
+		break;
+	case 9:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_nesw_l.cur");
+		break;
+	case 10:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_ns_l.cur");
+		break;
+	case 11:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_nwse_l.cur");
+		break;
+	case 12:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_ew_l.cur");
+		break;
+	case 13:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\aero_up_l.cur");
+		break;
+	case 14:
+		cursor = LoadCursorFromFileA("C:\\Windows\\Cursors\\wait_il.cur");
+		break;
+	}
+
+	SetSystemCursor(cursor, cursorID);
+
+}
+
+
+int main() { // yes a switch case is better for this, but I really dont care, this is not active runtime check for 99.999% of the program
+	
+	std::cout << "click 'Y' or 'y' and enter for 'image to cursor', or 'r' (and 'R') to revert a cursor to default... any other letter turns on 'video to cursor' mode\n\n\n\n\n";
 	std::cin >> check;
 	
 	std::cout << "\n\n\n";
@@ -430,11 +501,20 @@ int main() {
 	if (check == 'y' || check == 'Y') {
 		ImageToCursor();
 	}
+
+	else if(check == 'r' || check == 'R') {
+
+		revertCursor();
+
+	}
+
 	else {
 
 		VideoToCursor();
 
 	}
+
+
 
 	return 0;
 }
