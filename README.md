@@ -24,3 +24,7 @@ the instructions are in the application on startup
 
 
 the included EXE is the build solution, the 2 .cur files are the example cursors I found off some royalty free (and distrubution rights free) website; feel free to use them, point of them is to provide a example of how the files must be formatted
+
+turtorial was made as well
+
+btw for the code part: I used jpg to icon to cur since jpg shrinks the file size from compression; I am aware jpg becomes a bmp and then ico file when converted
