@@ -14,7 +14,6 @@
 #include <utility>
 #include <stdio.h>
 #include <stdlib.h>
-#include <libavcodec/avcodec.h>
 #include <fstream>
 
 #define INBUF_SIZE 4096
