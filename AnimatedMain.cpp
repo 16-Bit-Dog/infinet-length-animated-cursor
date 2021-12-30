@@ -3,7 +3,7 @@
 //Exists to do some thing I needed to be done
 //////////////////////
  
-// CREDIT to Tapio Vierros and his amazing console API named rlutil
+// CREDIT to Tapio Vierros and his amazing console API udeas - from rlutil
 
 #pragma comment (lib, "windowscodecs.lib")
 
@@ -21,9 +21,6 @@ int GLOBALSCALE;
 HANDLE hConsole;
 CONSOLE_SCREEN_BUFFER_INFOEX info;
 CONSOLE_FONT_INFOEX CFI;
-
-//program requries AVX because I felt like it may do something - need to test
-//requires CUDA enabled GPU - no idea what sm because still working on project
 
 //this is a rasterizer of a image program
 struct RGBA {
